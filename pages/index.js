@@ -1,13 +1,17 @@
-
 import Layout from '../components/Layout'
+import ProductItem from '../components/ProductItem'
+import data from '../utils/data'
 
 
 export default function Home() {
   return (
     <Layout title="Home">
-      <div className="">
-        <h1 className="text-4xl font-bold">NextMall with Tailwindcss</h1>
-        <p>웹서버프로그래밍, 강채린!</p>
+      <div>
+        {
+          data.products.map((product) => (
+            <ProductItem product={product} key={product.slug}/>
+          ))
+        }
       </div>
     </Layout>
   )
