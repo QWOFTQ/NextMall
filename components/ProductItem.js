@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 
 export default function ProductItem({product}) {
-  return 
+  return (
   <div className='card'>
     <Link href={`/product/${product.slug}`}>
       <a>
@@ -25,5 +25,5 @@ export default function ProductItem({product}) {
     </div>
 
   </div>
-  
+  )
 }
