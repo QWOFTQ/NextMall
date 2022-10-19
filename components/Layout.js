@@ -37,6 +37,10 @@ export default function Layout({ title, children }) {
               <Link href="/login">
                 <a className="p-2">Login</a>
               </Link>
+
+              <Link href="/contact">
+                <a className="p-2">자기소개</a>
+              </Link>
             </div>
           </nav>
         </header>
