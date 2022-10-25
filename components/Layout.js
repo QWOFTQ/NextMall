@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Store } from '../utils/Store'
 
 export default function Layout({ title, children }) {
   const { state } = useContext(Store)
   const { cart } = state
+
   return (
     <>
       <Head>
