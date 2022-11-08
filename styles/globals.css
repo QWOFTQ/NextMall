@@ -19,19 +19,16 @@ a {
   box-sizing: border-box;
 }
 
-input, select, textarea {
-  @apply rounded border p-2 outline-none ring-indigo-300
-  focus:ring bg-slate-100;
-}
-
 .card {
   @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
 }
 
 .primary-button {
-  @apply rounded bg-amber-300 py-2 px-4 shadow 
-  outline-none hover:bg-amber-400
-  active:bg-amber-500 active:font-bold;
+  @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500 active:font-bold;
+}
+
+.dropdown-link {
+  @apply flex p-2 hover:bg-gray-300;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,4 +39,10 @@ input, select, textarea {
     color: white;
     background: black;
   }
+}
+
+input,
+select,
+textarea {
+  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring bg-slate-100;
 }
