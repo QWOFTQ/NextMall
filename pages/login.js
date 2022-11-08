@@ -1,17 +1,42 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import Layout from '../components/Layout'
+import { signIn, useSession } from 'next-auth/react'
+import { toast } from 'react-toastify'
+import { getError } from '../utils/error'
+import { useRouter } from 'next/router'
 
 export default function LoginScreen() {
+  const { data: session } = useSession()
+  const router = useRouter()
+  const { redirect } = router.query
+  
+  useEffect(() => {
+    if(session?.user) {
+      router.push(redirect || '/')
+    }
+  },[router, session, redirect])
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm()
 
-  const submitHandler = ({ email, password }) => {
-    console.log(email, password)
+  const submitHandler = async ({ email, password }) => {
+    try {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      })
+      if (result.error) {
+        toast.error(result.error)
+      }
+    } catch (error) {
+      toast.error(getError(err))
+    }
   }
 
   return (
@@ -69,8 +94,10 @@ export default function LoginScreen() {
         </div>
 
         <div className="mb-4">
-          계정이 없으면 등록하세요... <Link href="register">
-            <a>Register</a></Link>
+          계정이 없으면 등록하세요...{' '}
+          <Link href="register">
+            <a>Register</a>
+          </Link>
         </div>
       </form>
     </Layout>
