@@ -23,7 +23,7 @@ export default function LoginScreen() {
     register,
     formState: { errors },
   } = useForm()
-
+  
   const submitHandler = async ({ email, password }) => {
     try {
       const result = await signIn('credentials', {
