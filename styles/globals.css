@@ -32,7 +32,7 @@ a {
 }
 
 .dropdown-link {
-  @apply flex p-2 hover:bg-gray-300;
+  @apply flex p-2 hover:bg-gray-200;
 }
 
 @media (prefers-color-scheme: dark) {

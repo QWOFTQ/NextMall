@@ -8,6 +8,7 @@ import { signOut, useSession } from 'next-auth/react'
 import { Menu } from '@headlessui/react'
 import DropdownLink from './DropdownLink'
 import Cookies from 'js-cookie'
+import React from 'react'
 
 export default function Layout({ title, children }) {
   const { state, dispatch } = useContext(Store)
@@ -17,6 +18,8 @@ export default function Layout({ title, children }) {
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0))
   }, [cart.cartItems])
+
+    
 
   const logoutClickHandler = () => {
     Cookies.remove('cart')
