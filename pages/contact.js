@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Home from '.'
 import chaerin from '../public/images/chaerin.jpg'
 import styles from '../styles/Home.module.css'
 
