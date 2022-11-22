@@ -1,10 +1,11 @@
 import Image from 'next/image'
+import Home from '.'
 import chaerin from '../public/images/chaerin.jpg'
 import styles from '../styles/Home.module.css'
 
 export default function Contact() {
   return (
-    <div className={styles.me}>
+    <div className={styles.main}>
       <h1>자기 소개</h1>
       
       <Image 

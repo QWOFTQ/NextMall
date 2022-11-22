@@ -39,6 +39,23 @@ export default function LoginScreen() {
     }
   }
 
+  const githubLoginHandler = async () => {
+    try {
+      const result = await signIn('github', {redirect: false})
+      console.log('Github login: '+result)
+    } catch (err) {
+      toast.error(getError(err))
+    }
+  }
+  const googleLoginHandler = async () => {
+    try {
+      const result = await signIn('google', {redirect: false})
+      console.log('Google login: '+result)
+    } catch (err) {
+      toast.error(getError(err))
+    }
+  }
+
   return (
     <Layout title="Login">
       <form
@@ -47,8 +64,8 @@ export default function LoginScreen() {
       >
         <h1 className="text-xl mb-4">Login</h1>
 
-        <div className="mb-4">
-          <label htmlFor="email">Email</label>
+        <div className="mb-4 bg-lime-100 p-4 m-2">
+          <label htmlFor="email" className='mt-2'>Email</label>
           <input
             type="email"
             {...register('email', {
@@ -67,8 +84,8 @@ export default function LoginScreen() {
           )}
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="password">Password</label>
+        <div className="mb-4 bg-lime-100 p-4 m-2">
+          <label htmlFor="password" className='mt-2'>Password</label>
           <input
             type="password"
             {...register('password', {
@@ -88,7 +105,7 @@ export default function LoginScreen() {
         </div>
 
         <div className="mb-4">
-          <button className="primary-button" type="submit">
+          <button className="primary-button mt-2" type="submit">
             Login
           </button>
         </div>
@@ -98,6 +115,19 @@ export default function LoginScreen() {
           <Link href="register">
             <a>Register</a>
           </Link>
+        </div>
+        
+        <div className='p-5 bg-gray-400 rounded-lg'>
+
+          <div className='mb-4'>
+            <button className='primary-button w-full' onClick={githubLoginHandler}>Github Login</button>
+
+          </div>
+          <div className='mb-4'>
+            <button className='primary-button w-full' onClick={googleLoginHandler}>Google Login</button>
+
+          </div>
+
         </div>
       </form>
     </Layout>

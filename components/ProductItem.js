@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import Link from 'next/link'
 import React from 'react'
 
@@ -7,7 +7,7 @@ export default function ProductItem({ product, addToCartHandler }) {
     <div className="card">
       <Link href={`/product/${product.slug}`}>
         <a>
-          <Image
+          <img
             src={product.image}
             alt={product.name}
             className="rounded shadow"

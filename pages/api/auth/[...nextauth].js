@@ -1,22 +1,24 @@
-import nextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
-import User from "../../../models/User"
-import db from "../../../utils/db"
+import nextAuth from 'next-auth'
+import User from '../../../models/User'
+import db from '../../../utils/db'
 import bcryptjs from 'bcryptjs'
+import CredentialsProvider from 'next-auth/providers/credentials'
+import GithubProvider from 'next-auth/providers/github'
+import GoogleProvider from 'next-auth/providers/google'
 
 export default nextAuth({
   session: {
-    strategy: 'jwt'
+    strategy: 'jwt',
   },
   callbacks: {
-    async jwt({token, user}) {
-      if(user?._id) token._id = user._id
-      if(user?.isAdmin) token.isAdmin= user.isAdmin
+    async jwt({ token, user }) {
+      if (user?._id) token._id = user._id
+      if (user?.isAdmin) token.isAdmin = user.isAdmin
       return token
     },
-    async session({session, token}) {
-      if(token?._id) session._id = token._id
-      if(token?.isAdmin) session.isAdmin = token.isAdmin
+    async session({ session, token }) {
+      if (token?._id) session._id = token._id
+      if (token?.isAdmin) session.isAdmin = token.isAdmin
       return session
     },
   },
@@ -24,19 +26,27 @@ export default nextAuth({
     CredentialsProvider({
       async authorize(credentials) {
         await db.connect()
-        const user = await User.findOne({email: credentials.email})
+        const user = await User.findOne({ email: credentials.email })
         await db.disconnect()
-        if(user && bcryptjs.compareSync(credentials.password, user.password)) {
+        if (user && bcryptjs.compareSync(credentials.password, user.password)) {
           return {
             _id: user._id,
             name: user.name,
             email: user.email,
             image: 'f',
-            isAdmin: user.isAdmin
+            isAdmin: user.isAdmin,
           }
         }
         throw new Error('Invalid email or password')
       },
-    })
-  ]
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
 })
