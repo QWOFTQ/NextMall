@@ -55,6 +55,22 @@ export default function LoginScreen() {
       toast.error(getError(err))
     }
   }
+  const kakaoLoginHandler = async () => {
+    try {
+      const result = await signIn('kakao', {redirect: false})
+      console.log('Kakao login: '+result)
+    } catch (err) {
+      toast.error(getError(err))
+    }
+  }
+  const naverLoginHandler = async () => {
+    try {
+      const result = await signIn('naver', {redirect: false})
+      console.log('Naver login: '+result)
+    } catch (err) {
+      toast.error(getError(err))
+    }
+  }
 
   return (
     <Layout title="Login">
@@ -123,8 +139,19 @@ export default function LoginScreen() {
             <button className='primary-button w-full' onClick={githubLoginHandler}>Github Login</button>
 
           </div>
+          
           <div className='mb-4'>
             <button className='primary-button w-full' onClick={googleLoginHandler}>Google Login</button>
+
+          </div>
+          
+          <div className='mb-4'>
+            <button className='primary-button w-full' onClick={kakaoLoginHandler}>Kakao Login</button>
+
+          </div>
+          
+          <div className='mb-4'>
+            <button className='primary-button w-full' onClick={naverLoginHandler}>Naver Login</button>
 
           </div>
 
