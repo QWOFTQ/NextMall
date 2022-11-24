@@ -80,7 +80,7 @@ export default function LoginScreen() {
       >
         <h1 className="text-xl mb-4">Login</h1>
 
-        <div className="mb-4 bg-lime-100 p-4 m-2">
+        <div className="mb-4 p-4 m-2">
           <label htmlFor="email" className='mt-2'>Email</label>
           <input
             type="email"
@@ -100,7 +100,7 @@ export default function LoginScreen() {
           )}
         </div>
 
-        <div className="mb-4 bg-lime-100 p-4 m-2">
+        <div className="mb-4 p-4 m-2">
           <label htmlFor="password" className='mt-2'>Password</label>
           <input
             type="password"
@@ -133,7 +133,7 @@ export default function LoginScreen() {
           </Link>
         </div>
         
-        <div className='p-5 bg-gray-400 rounded-lg'>
+        <div className='p-4 rounded-lg'>
 
           <div className='mb-4'>
             <button className='primary-button w-full' onClick={githubLoginHandler}>Github Login</button>
