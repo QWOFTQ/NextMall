@@ -1,0 +1,17 @@
+MONGODB_URI=mongodb+srv://nextmall:1234@cluster0.nsgsylr.mongodb.net/nextmall?retryWrites=true&w=majority
+
+GITHUB_ID=01a12f1727becac59cc9
+GITHUB_SECRET=f6d6007faf0fadf3cc64ab8156568463ac0cf632
+
+GOOGLE_CLIENT_ID=504021892949-g172tqedv1m82lrk850fqkg3usm8iulb.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+
+KAKAO_CLIENT_ID=61181882f2941f0978c8fc73d91a633b
+KAKAO_CLIENT_SECRET=dvYC9obm6xI8mIjW1I5uGDCeRIhW4oy7
+
+NAVER_CLIENT_ID=UzbFF5VaXKOLvA9FuDG2
+NAVER_CLIENT_SECRET=xQ34fzBWx4
+
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=asdfasfdfdsfafadfaf
+JWT_SECRET=qwfasdfadsrerasdgg
